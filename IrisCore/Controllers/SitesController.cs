@@ -11,11 +11,11 @@ namespace IrisCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TblSitesController : ControllerBase
+    public class SitesController : ControllerBase
     {
         private readonly IrisDbContext _context;
 
-        public TblSitesController(IrisDbContext context)
+        public SitesController(IrisDbContext context)
         {
             _context = context;
         }
