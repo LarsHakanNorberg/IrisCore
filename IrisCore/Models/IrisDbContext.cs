@@ -11,5 +11,15 @@ namespace IrisCore.Models
         public IrisDbContext(DbContextOptions<IrisDbContext> options) : base(options)
         { }
         public DbSet<TblSite> TblSite { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TblSite>(entity =>
+            {
+                entity.HasKey(e => e.SiteId)
+                    .IsClustered(false);
+
+                entity.ToTable("tblSite");
+            });
+        }
     }
 }
