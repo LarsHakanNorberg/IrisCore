@@ -27,10 +27,7 @@ namespace IrisCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            ///services.AddDbContext<IrisDbContext>(options =>
-            ///    options.UseSqlServer(Configuration.GetConnectionString(@"data source=DEMEESDB0004\AA_SA1;initial catalog=HO_IRIS_PROD;uid=HO_IRIS_usr;pwd=zuV5vTpm;MultipleActiveResultSets=True;App=EntityFramework"))); /// Web.config saknas, borde bara json config 2020-02-05
-            services.AddDbContext<IrisDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("IrisDb"))); /// Lars added 2020-01-21
+            services.AddDbContext<IrisDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:IrisDb"])); // from appsettings.json
             services.AddControllers();
         }
 
