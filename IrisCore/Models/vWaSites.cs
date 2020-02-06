@@ -15,6 +15,6 @@ namespace IrisCore.Models
         public string CountryCode { get; set; }
         public string Country { get; set; }
         public string Currency { get; set; }
-
+        public int Active { get; set; }
     }
 }
