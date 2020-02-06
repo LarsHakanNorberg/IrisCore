@@ -22,9 +22,10 @@ namespace IrisCore.Controllers
 
         // GET: api/TblSites
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TblSite>>> GetTblSite()
+        public async Task<ActionResult<IEnumerable<vWaSites>>> GetTblSite()
         {
-            return await _context.TblSite.ToListAsync();
+            //return await _context.TblSite.ToListAsync();
+            return await _context.vWaSites.ToListAsync();
         }
 
         // GET: api/TblSites/5

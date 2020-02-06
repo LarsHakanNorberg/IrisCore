@@ -10,6 +10,7 @@ namespace IrisCore.Models
     {
         public IrisDbContext(DbContextOptions<IrisDbContext> options) : base(options)
         { }
+        public DbSet<vWaSites> vWaSites { get; set; }
         public DbSet<TblSite> TblSite { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,6 +20,10 @@ namespace IrisCore.Models
                     .IsClustered(false);
 
                 entity.ToTable("tblSite");
+            });
+            modelBuilder.Entity<vWaSites>(entity =>
+            {
+                entity.HasNoKey();
             });
         }
     }
