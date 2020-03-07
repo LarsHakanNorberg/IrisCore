@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace IrisCore.Models
 {
-    public class TblSite
+    public class tblSite
     {
         public int SiteId { get; set; }
         public string SiteName { get; set; }

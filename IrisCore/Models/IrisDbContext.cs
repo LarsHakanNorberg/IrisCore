@@ -10,18 +10,18 @@ namespace IrisCore.Models
     {
         public IrisDbContext(DbContextOptions<IrisDbContext> options) : base(options)
         { }
-        public DbSet<vWaSites> vWaSites { get; set; }
-        public DbSet<TblSite> TblSite { get; set; }
+        public DbSet<vWaSite> vWaSites { get; set; }
+        public DbSet<tblSite> TblSite { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TblSite>(entity =>
+            modelBuilder.Entity<tblSite>(entity =>
             {
                 entity.HasKey(e => e.SiteId)
                     .IsClustered(false);
 
                 entity.ToTable("tblSite");
             });
-            modelBuilder.Entity<vWaSites>(entity =>
+            modelBuilder.Entity<vWaSite>(entity =>
             {
                 entity.HasNoKey();
             });

@@ -22,7 +22,7 @@ namespace IrisCore.Controllers
 
         // GET: api/TblSites
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<vWaSites>>> GetTblSite()
+        public async Task<ActionResult<IEnumerable<vWaSite>>> GetTblSite()
         {
             //return await _context.TblSite.ToListAsync();
             return await _context.vWaSites.ToListAsync();
@@ -30,7 +30,7 @@ namespace IrisCore.Controllers
 
         // GET: api/TblSites/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TblSite>> GetTblSite(int id)
+        public async Task<ActionResult<tblSite>> GetTblSite(int id)
         {
             var tblSite = await _context.TblSite.FindAsync(id);
 
@@ -46,7 +46,7 @@ namespace IrisCore.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTblSite(int id, TblSite tblSite)
+        public async Task<IActionResult> PutTblSite(int id, tblSite tblSite)
         {
             if (id != tblSite.SiteId)
             {
@@ -78,7 +78,7 @@ namespace IrisCore.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<TblSite>> PostTblSite(TblSite tblSite)
+        public async Task<ActionResult<tblSite>> PostTblSite(tblSite tblSite)
         {
             _context.TblSite.Add(tblSite);
             await _context.SaveChangesAsync();
@@ -88,7 +88,7 @@ namespace IrisCore.Controllers
 
         // DELETE: api/TblSites/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<TblSite>> DeleteTblSite(int id)
+        public async Task<ActionResult<tblSite>> DeleteTblSite(int id)
         {
             var tblSite = await _context.TblSite.FindAsync(id);
             if (tblSite == null)
