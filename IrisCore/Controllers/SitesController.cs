@@ -25,14 +25,14 @@ namespace IrisCore.Controllers
         public async Task<ActionResult<IEnumerable<vWaSite>>> GetTblSite()
         {
             //return await _context.TblSite.ToListAsync();
-            return await _context.vWaSites.ToListAsync();
+            return await _context.vWaSite.ToListAsync();
         }
 
         // GET: api/TblSites/5
         [HttpGet("{id}")]
         public async Task<ActionResult<tblSite>> GetTblSite(int id)
         {
-            var tblSite = await _context.TblSite.FindAsync(id);
+            var tblSite = await _context.tblSite.FindAsync(id);
 
             if (tblSite == null)
             {
@@ -80,7 +80,7 @@ namespace IrisCore.Controllers
         [HttpPost]
         public async Task<ActionResult<tblSite>> PostTblSite(tblSite tblSite)
         {
-            _context.TblSite.Add(tblSite);
+            _context.tblSite.Add(tblSite);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetTblSite", new { id = tblSite.SiteId }, tblSite);
@@ -90,13 +90,13 @@ namespace IrisCore.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<tblSite>> DeleteTblSite(int id)
         {
-            var tblSite = await _context.TblSite.FindAsync(id);
+            var tblSite = await _context.tblSite.FindAsync(id);
             if (tblSite == null)
             {
                 return NotFound();
             }
 
-            _context.TblSite.Remove(tblSite);
+            _context.tblSite.Remove(tblSite);
             await _context.SaveChangesAsync();
 
             return tblSite;
@@ -104,7 +104,7 @@ namespace IrisCore.Controllers
 
         private bool TblSiteExists(int id)
         {
-            return _context.TblSite.Any(e => e.SiteId == id);
+            return _context.tblSite.Any(e => e.SiteId == id);
         }
     }
 }
