@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using IrisCore.Models;
+using IrisCore.Services;
 
 namespace IrisCore.Controllers
 {
@@ -14,18 +15,21 @@ namespace IrisCore.Controllers
     public class SitesController : ControllerBase
     {
         private readonly IrisDbContext _context;
+        private readonly SqlSiteService _sqlSiteService;
 
-        public SitesController(IrisDbContext context)
+        public SitesController(IrisDbContext context, SqlSiteService sqlSiteService)
         {
             _context = context;
+            _sqlSiteService = sqlSiteService;
         }
 
         // GET: api/TblSites
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<vWaSite>>> GetTblSite()
+        public async Task<ActionResult<IEnumerable<vWaSite>>> GetTblSite() 
         {
             //return await _context.TblSite.ToListAsync();
             return await _context.vWaSite.ToListAsync();
+            
         }
 
         // GET: api/TblSites/5

@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using IrisCore.Models;
+using IrisCore.Services;
 
 namespace IrisCore
 {
@@ -28,6 +29,7 @@ namespace IrisCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<IrisDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:IrisDb"])); // from appsettings.json
+            services.AddTransient<SqlSiteService>();
             services.AddControllers();
         }
 
