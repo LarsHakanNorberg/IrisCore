@@ -16,7 +16,7 @@ namespace IrisCore.Models
         {
             modelBuilder.Entity<tblSite>(entity =>
             {
-                entity.HasKey(e => e.SiteId)
+                entity.HasKey(e => e.SiteID)
                     .IsClustered(false);
 
                 entity.ToTable("tblSite");

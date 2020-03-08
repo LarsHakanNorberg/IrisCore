@@ -48,7 +48,7 @@ namespace IrisCore.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTblSite(int id, tblSite tblSite)
         {
-            if (id != tblSite.SiteId)
+            if (id != tblSite.SiteID)
             {
                 return BadRequest();
             }
@@ -83,7 +83,7 @@ namespace IrisCore.Controllers
             _context.tblSite.Add(tblSite);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTblSite", new { id = tblSite.SiteId }, tblSite);
+            return CreatedAtAction("GetTblSite", new { id = tblSite.SiteID }, tblSite);
         }
 
         // DELETE: api/TblSites/5
@@ -104,7 +104,7 @@ namespace IrisCore.Controllers
 
         private bool TblSiteExists(int id)
         {
-            return _context.tblSite.Any(e => e.SiteId == id);
+            return _context.tblSite.Any(e => e.SiteID == id);
         }
     }
 }
