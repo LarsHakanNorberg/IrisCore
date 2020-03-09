@@ -29,7 +29,7 @@ namespace IrisCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<IrisDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:IrisDb"])); // from appsettings.json
-            services.AddTransient<SqlSiteService>();
+            services.AddTransient<IrisDbService>();
             services.AddControllers();
         }
 

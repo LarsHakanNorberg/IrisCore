@@ -15,9 +15,9 @@ namespace IrisCore.Controllers
     public class SitesController : ControllerBase
     {
         private readonly IrisDbContext _context;
-        private readonly SqlSiteService _sqlSiteService;
+        private readonly IrisDbService _sqlSiteService;
 
-        public SitesController(IrisDbContext context, SqlSiteService sqlSiteService)
+        public SitesController(IrisDbContext context, IrisDbService sqlSiteService)
         {
             _context = context;
             _sqlSiteService = sqlSiteService;
