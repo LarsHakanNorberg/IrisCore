@@ -14,21 +14,23 @@ namespace IrisCore.Controllers
     [ApiController]
     public class SitesController : ControllerBase
     {
-        private readonly IrisDbContext _context;
-        private readonly IrisDbService _sqlSiteService;
+        private readonly IrisDbContext _irisDbContext;
+        private readonly IrisDbService _irisDbService;
 
-        public SitesController(IrisDbContext context, IrisDbService sqlSiteService)
+        public SitesController(IrisDbContext irisDbContext, IrisDbService sqlSiteService)
         {
-            _context = context;
-            _sqlSiteService = sqlSiteService;
+            _irisDbContext = irisDbContext;
+            _irisDbService = sqlSiteService;
         }
 
         // GET: api/TblSites
         [HttpGet]
         public async Task<ActionResult<IEnumerable<vWaSite>>> GetTblSite() 
         {
-            //return await _context.TblSite.ToListAsync();
-            return await _context.vWaSite.ToListAsync();
+            var AllSites = _irisDbService.GetAllSites();
+
+            /// return = await _irisDbContext.tblSite.ToListAsync(); / public async Task<ActionResult<IEnumerable<vWaSite>>> GetTblSite()
+            return await _irisDbContext.vWaSite.ToListAsync();
             
         }
 
@@ -36,7 +38,7 @@ namespace IrisCore.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<tblSite>> GetTblSite(int id)
         {
-            var tblSite = await _context.tblSite.FindAsync(id);
+            var tblSite = await _irisDbContext.tblSite.FindAsync(id);
 
             if (tblSite == null)
             {
@@ -57,11 +59,11 @@ namespace IrisCore.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(tblSite).State = EntityState.Modified;
+            _irisDbContext.Entry(tblSite).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _irisDbContext.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -84,8 +86,8 @@ namespace IrisCore.Controllers
         [HttpPost]
         public async Task<ActionResult<tblSite>> PostTblSite(tblSite tblSite)
         {
-            _context.tblSite.Add(tblSite);
-            await _context.SaveChangesAsync();
+            _irisDbContext.tblSite.Add(tblSite);
+            await _irisDbContext.SaveChangesAsync();
 
             return CreatedAtAction("GetTblSite", new { id = tblSite.SiteID }, tblSite);
         }
@@ -94,21 +96,21 @@ namespace IrisCore.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<tblSite>> DeleteTblSite(int id)
         {
-            var tblSite = await _context.tblSite.FindAsync(id);
+            var tblSite = await _irisDbContext.tblSite.FindAsync(id);
             if (tblSite == null)
             {
                 return NotFound();
             }
 
-            _context.tblSite.Remove(tblSite);
-            await _context.SaveChangesAsync();
+            _irisDbContext.tblSite.Remove(tblSite);
+            await _irisDbContext.SaveChangesAsync();
 
             return tblSite;
         }
 
         private bool TblSiteExists(int id)
         {
-            return _context.tblSite.Any(e => e.SiteID == id);
+            return _irisDbContext.tblSite.Any(e => e.SiteID == id);
         }
     }
 }

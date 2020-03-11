@@ -10,8 +10,10 @@ namespace IrisCore.Models
     {
         public IrisDbContext(DbContextOptions<IrisDbContext> options) : base(options)
         { }
+        public DbSet<tblCountry> tblCountry { get; set; }
         public DbSet<vWaSite> vWaSite { get; set; }
         public DbSet<tblSite> tblSite { get; set; }
+        public DbSet<tblTimeZone> tblTimeZone { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<tblSite>(entity =>

@@ -10,8 +10,7 @@ namespace IrisCore.Models
     [Table("vWaSites")]
     public class vWaSite
     {
-        [Key]
-        public int SiteId { get; set; }
+        public int SiteID { get; set; }
         public string SiteCode { get; set; }
         public string Site { get; set; }
         public string City { get; set; }
@@ -19,6 +18,9 @@ namespace IrisCore.Models
         public string CountryCode { get; set; }
         public string Country { get; set; }
         public string Currency { get; set; }
-        public int Active { get; set; }
+        [NotMapped]
+        public bool Active { get; set; }
+        [NotMapped]
+        public string TimeZone { get; set; }
     }
 }

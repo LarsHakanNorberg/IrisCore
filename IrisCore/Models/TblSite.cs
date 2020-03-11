@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace IrisCore.Models
 {
-    [Table("tblSite")]
-    public partial class tblSite
+    public class tblSite
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblSite()
