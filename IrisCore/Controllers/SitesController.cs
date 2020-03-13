@@ -27,7 +27,7 @@ namespace IrisCore.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<vWaSite>>> GetTblSite() 
         {
-            var AllSites = _irisDbService.GetAllSites();
+            var AllSites = _irisDbService.GetAllSites(); // Just for testing
 
             /// return = await _irisDbContext.tblSite.ToListAsync(); / public async Task<ActionResult<IEnumerable<vWaSite>>> GetTblSite()
             return await _irisDbContext.vWaSite.ToListAsync();

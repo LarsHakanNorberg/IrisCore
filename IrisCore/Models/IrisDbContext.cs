@@ -10,7 +10,10 @@ namespace IrisCore.Models
     {
         public IrisDbContext(DbContextOptions<IrisDbContext> options) : base(options)
         { }
+        public DbSet<Company> Company { get; set; }
+        public DbSet<tblCompany> tblCompany {get;set;}
         public DbSet<tblCountry> tblCountry { get; set; }
+        public DbSet<tblLegalEntity> tblLegalEntity { get; set; }
         public DbSet<vWaSite> vWaSite { get; set; }
         public DbSet<tblSite> tblSite { get; set; }
         public DbSet<tblTimeZone> tblTimeZone { get; set; }
